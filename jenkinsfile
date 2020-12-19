@@ -2,8 +2,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'robot -d ./logs -i verificaListaPedidos tests/
-'
+                sh 'robot -d ./logs -i verificaListaPedidos tests/'
             }
         }
         post {
