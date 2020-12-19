@@ -1,15 +1,15 @@
 pipeline {
-        stages {
-            stage('Test') {
-                steps {
-                    sh 'robot -d logs/ web/tests'
-                }
-            }
-            post {
-                always {
-                    robot outputPath: 'out/'
-                    influxDbPublisher selectedTarget: 'myDb'
-                }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'robot -d logs/ web/tests'
             }
         }
+        post {
+            always {
+                robot outputPath: 'logs/'
+                influxDbPublisher selectedTarget: 'verificaListaPedidos'
+            }
+        }
+    }
 }
